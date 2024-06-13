@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech-shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section id="main-section">
+        <header class="mainheader">
+            <ul id="searchList"></ul>
+            <span class="header-span">
+                <span>
+                    <h2 id="ul-h2" onclick="show()">Tech Shop</h2>
+                </span>
+                <input type="text" id="search1" placeholder="Search For Product....">
+
+                <i class="fa-solid fa-x fa-lg" id="cross-icon"></i>
+
+                <span class="header-inner-span">
+                    <span class="header-icon-span">
+                        <i id="searchIcon" class="fa-solid fa-magnifying-glass fa-lg" onclick="search()"></i>
+                    </span>
+                    <span class="header-icon-span">
+                        <i id="cartstaticIcon" class="fa-solid fa-cart-shopping fa-lg" onclick="cartIcon()"></i>
+                    </span>
+                    <span class="header-icon-span">
+                        <i id="loginIcon" class="fa-regular fa-user fa-lg" onclick="hover()"></i>
+                    </span>
+                </span>
+            </span>
+        </header>
+        <!-- count for add to cart -->
+        <p id="countCart">0</p>
+
+        <!-- emptyCart -->
+        <section>
+            <div id="emptyCart">
+                <i id="emptypageerror" class="fa-solid fa-cart-plus fa-2xl"></i>
+                <h1 id="emptyCart-h1">Your Cart is Empty</h1>
+                <button id="emptyCart-button" onclick="startShopping()">Start
+                    Shopping</button>
+            </div>
+            <div id="hello1" class="hello2">
+                <div id="cartItems"></div>
+                <div id="ordersummary"></div>
+            </div>
+        </section>
+        <!-- hoverPart -->
+        <div id="hoverPart">
+            <h2>Hello!</h2>
+            <p>Access account and manage orders</p>
+            <button onclick="loginForm()" id="hoverPart-btn">Login/Signup</button>
+            <hr id="hoverPart-hr">
+            <ul id="hoverPart-ul">
+                <li class="allli">Orders</li>
+                <li class="allli">Wishlist</li>
+                <li class="allli">Gift Cards</li>
+                <li class="allli">Saved Cards</li>
+                <li class="allli">Saved Addresses</li>
+            </ul>
+        </div>
+        <!-- loginPart -->
+        <dialog id="loginP">
+            <i id="loginPicon" class="fa-solid fa-x fa-lg" onclick="closeLogin()"></i>
+            <h1>login</h1>
+            <p id="loginP-p">New to Danish Kohli ?</p>
+            <h5 id="loginP-h5" onclick="signUp()"> Create an account</h5><br><br>
+            <input id="loginP-email" type="email" placeholder="Email"><br><br>
+            <input id="loginP-password" type="password" placeholder="Password"><br><br>
+            <input id="loginP-submit" type="submit" value="Login"><br><br>
+            <span id="loginP-span1">
+                <hr id="loginP-hr">
+                <span id="loginP-span2">or login with</span>
+                <hr id="loginP-hr1">
+            </span><br>
+            <span id="loginP-span3">
+                <button id="loginP-facebook">Facebook</button>
+                <button id="loginP-google">Google</button>
+                <button id="loginP-twitter">Twitter</button>
+            </span>
+        </dialog>
+        <!-- SignUp -->
+        <dialog id="signup">
+            <i id="signupicon" class="fa-solid fa-x fa-lg" onclick="closeLogin()"></i>
+            <h1>Signup</h1>
+            <p id="signup-p">Already have an account ?</p>
+            <h5 id="signup-h5" onclick="loginForm()">Login</h5><br><br>
+            <input id="signup-username" type="text" placeholder="Username"><br><br>
+            <input id="signup-email" type="email" placeholder="Email"><br><br>
+            <input id="signup-password" type="password" placeholder="Password"><br><br>
+            <input id="signup-conpwd" type="password" placeholder="Confirm Password"><br><br>
+            <input id="signup-btn" type="submit" value="Signup"><br><br>
+            <span id="signup-span">
+                <hr id="signup-hr1">
+                <span id="signup-span2">or login with</span>
+                <hr id="signup-hr2">
+            </span><br>
+            <span id="signup-span3">
+                <button id="signup-facebook">Facebook</button>
+                <button id="signup-google">Google</button>
+                <button id="signup-twitter">Twitter</button>
+            </span>
+        </dialog>
+
+        <!-- Main-Caurosal-part -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
+            style="background-color:rgb(34, 33, 33);z-index:1;">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div id="carousel-inner-div1">
+                        <div id="carousel-inner-div2">
+                            <p style="color:rgb(182, 180, 180);">JBL Live 660NC</p>
+                            <h1 style="color: white;">Keep The Noise Out,<br>Or In. You Choose.</h1><br>
+                            <span>
+                                <i class="fa-solid fa-indian-rupee-sign" style="color: #f0f2f5;">
+                                    9,999</i> &nbsp;&nbsp;&nbsp;<i class="fa-solid fa-indian-rupee-sign"
+                                    style="color:gray;text-decoration: line-through;">14,999</i>
+                            </span><br>
+                            <button id="carousel-inner-btn" onclick="detail(1)">Shop Now</button>
+                        </div>
+                        <div id="carousel-inner-div3">
+                            <img src="./images/category-1.png" class="d-block-w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div id="carousel-item1-div1">
+                        <div id="carousel-item1-div2">
+                            <p style="color:rgb(182, 180, 180);">boAt Airdopes 131</p>
+                            <h1 style="color: white;">Featherweight For<br>Comfort All-Day.</h1><br>
+                            <span>
+                                <i class="fa-solid fa-indian-rupee-sign" style="color: #f0f2f5;">
+                                    1,099</i> &nbsp;&nbsp;&nbsp;<i class="fa-solid fa-indian-rupee-sign"
+                                    style="color:gray;text-decoration: line-through;">2,990</i>
+                            </span><br>
+                            <button id="carousel-inner-btn1" onclick="detail(3)">Shop Now</button>
+                        </div>
+                        <div id="carousel-item1-div3">
+                            <img src="./images/boat131-3.png" class="d-block-w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div id="carousel-item-div1">
+                        <div id="carousel-item-div2">
+                            <p style="color:rgb(182, 180, 180);">Sony WH-XB910N</p>
+                            <h1 style="color: white;">Give Your Favourite<br>Music A Boost.</h1><br>
+                            <span>
+                                <i class="fa-solid fa-indian-rupee-sign" style="color: #f0f2f5;">
+                                    13,489</i> &nbsp;&nbsp;&nbsp;<i class="fa-solid fa-indian-rupee-sign"
+                                    style="color:gray;text-decoration: line-through;">19,990</i>
+                            </span><br>
+                            <button id="carousel-item-btn" onclick="detail(7)">Shop Now</button>
+                        </div>
+                        <div id="carousel-item-div3">
+                            <img src="./images/sonyXb910n-1.png" class="d-block-w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <i class="fa-solid fa-chevron-up fa-2xl" id="scrollIcon"></i>
+
+        <!-- Featured Product -->
+        <section class="carousel slide">
+            <div>
+                <h2 id="Featured">Featured Products</h2>
+            </div>
+            <div>
+                <div id="featuredProduct">
+                    <div class="image py-5" id="allimg" onclick="detail(8)">
+                        <p style="color: white;">JBL Tune 760NC</p>
+                        <img src="./images/jbl760nc-1.png" width="200px">
+                        <span>
+                            <p style="color:white"> &#8377;5,999 <span><del
+                                        style="color: rgb(126, 128, 128);">&#8377;7,999</del></span></p>
+                        </span>
+                    </div>
+                    <div class="image py-5" id="allimg" onclick="detail(13)">
+                        <p style="color: white;">JBL Endurance Run Sports</p>
+                        <img src="./images/jbl-endu-1.png" width="200px">
+                        <span>
+                            <p style="color:white"> &#8377;999 <span><del
+                                        style="color: rgb(126, 128, 128);">&#8377;1,599</del></span></p>
+                        </span>
+                    </div>
+                    <div class="image py-5" id="allimg" onclick="detail(9)">
+                        <p style="color: white;">boAt Rockerz 255</p>
+                        <img src="./images/boat255r-1.png" width="200px">
+                        <span>
+                            <p style="color:white">&#8377;899 <span><del
+                                        style="color: rgb(126, 128, 128);">&#8377;2,990</del></span></p>
+                        </span>
+                    </div>
+                    <div class="image py-5" id="allimg" onclick="detail(2)">
+                        <p style="color: white;">boat Rockerz 518</p>
+                        <img src="./images/boat518-1.png" width="200px">
+                        <span>
+                            <p style="color: white;"> &#8377;1,299<span><del
+                                        style="color: rgb(126, 128, 128);">&#8377;3,990</del></span></p>
+                        </span>
+                    </div>
+                    <div class="image py-5" id="allimg" onclick="detail(14)">
+                        <p style="color: white;">boAt Airdopes 203</p>
+                        <img src="./images/boat203-1.png" width="200px">
+                        <span>
+                            <p style="color: white;"> &#8377;1,074 <span><del
+                                        style="color: rgb(126, 128, 128);">&#8377;3,999</del></span></p>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Top Product -->
+        <section id="top-product">
+            <h2 id="top-product-h2">Top Products</h2>
+            <div id="top-product-div1">
+                <p id="all" onclick="filterfn('All','all')">
+                    All</p>
+                <p class="Top-p" id="headphone" onclick="filterfn('Headphones','headphone')">
+                    Headphones</p>
+                <p class="Top-p" id="earbud" onclick="filterfn('Earbuds','earbud')">Earbuds</p>
+                <p class="Top-p" id="earphone" onclick="filterfn('Earphones','earphone')">Earphones
+                </p>
+                <p class="Top-p" id="neckband" onclick="filterfn('Neckbands','neckband')">Neckbands
+                </p>
+            </div>
+            <ul id="unOrdered"></ul>
+            <button id="filterbtn"
+                style="background-color: red;border-color:red;padding: 10px;color:white;margin-left: 60px;margin-bottom: 20px;display: none;border-radius: 7px;"
+                onclick="removeAllFilters()">Remove
+                Filter</button>
+            <ul id="unOrderedsecondlist" class="unorderedlist2" style="display: none;">
+                <span style="color: gray;background-color:#353333;padding-left: 20px;padding-right: 20px;">
+                    <div>
+                        <h2 style="color: white;">Sort By</h2>
+                        <hr style="border: 1px solid gray;">
+                        <p class="hoverclass" style="cursor: pointer;">Latest</p>
+                        <p class="hoverclass" style="cursor: pointer;" onclick="feature()">Featured</p>
+                        <p class="hoverclass" style="cursor: pointer;" onclick="toprate()">Top Rated</p>
+                        <p class="hoverclass" style="cursor: pointer;" onclick="lowestprice()">Price (Lowest First)</p>
+                        <p class="hoverclass" style="cursor: pointer;" onclick="highestprice()">Price (Highest First)
+                        </p>
+                        <br>
+                        <br>
+                    </div>
+                    <div>
+                        <h2 style="color: white;">Filter By</h2>
+                        <hr style="border: 1px solid gray;">
+                        <h4 style="color: white;">Brands</h4>
+                        <input name="selection" value="JBL" style="cursor: pointer;" type="checkbox" id="1"
+                            onclick="jbl()">
+                        <label class="hoverclass" for="1">&nbsp;JBL</label><br>
+                        <input name="selection" value="BoAt" style="cursor: pointer;" type="checkbox" value="BoAt"
+                            id="2" onclick="jbl()">
+                        <label class="hoverclass" for="2">&nbsp;BoAt</label><br>
+                        <input name="selection" value="Sony" style="cursor: pointer;" type="checkbox" value="Sony"
+                            id="3" onclick="jbl()">
+                        <label class="hoverclass" for="3">&nbsp;Sony</label><br>
+                        <br>
+                        <br>
+                        <h4 style="color: white;">category</h4>
+                        <input style="cursor: pointer;" type="checkbox" id="4" onclick="jbl()">
+                        <label class="hoverclass" for="4">&nbsp;Headphones</label><br>
+                        <input style="cursor: pointer;" type="checkbox" id="5" onclick="jbl()">
+                        <label class="hoverclass" for="5">&nbsp;Earbuds</label><br>
+                        <input style="cursor: pointer;" type="checkbox" id="6" onclick="jbl()">
+                        <label class="hoverclass" for="6">&nbsp;Earphones</label><br>
+                        <input style="cursor: pointer;" type="checkbox" id="7" onclick="jbl()">
+                        <label class="hoverclass" for="7">&nbsp;Neckbands</label><br>
+                        <br>
+                        <br>
+
+                        <h4 style="color: white;">Price</h4>
+                        <i class="fa-solid fa-indian-rupee-sign" style="color:gray">19,990</i><br>
+                        <input style=" border: 2px solid #fff;color: red;" id="priceSlider" type="range" min="0" max="19,990"
+                            value="50" />
+                    </div>
+                </span>
+            </ul>
+        </section>
+        <!-- detail part -->
+        <section id="div-sec"></section>
+
+        <!-- Our Advantage -->
+        <section id="advantage">
+            <h1 id="advantage-h1">Our Advantages</h1><br><br><br>
+            <div id="advantage-div1">
+                <div id="advantage-div2">
+                    <div id="advantage-div3">
+                        <i class="fa-solid fa-truck-fast fa-2xl" style="color: #f71b02;"></i>
+                    </div>
+                    <div id="advantage-div4">
+                        <h5 style="color: white;">Express Delivery<h5>
+                                <p style="color: #a3a3a3;font-size: 1rem;">Ships in 24 Hours</p>
+                    </div>
+                </div>
+                <div id="advantage1-div2">
+                    <div id="advantage1-div3">
+                        <i class="fa-solid fa-shield-halved fa-2xl" style="color: #fc1c03;"></i>
+                    </div>
+                    <div id="advantage1-div4">
+                        <h5 style="color: white;">Brand Warranty</h5>
+                        <p style="color: #a3a3a3;">100% Original products</p>
+                    </div>
+                </div>
+                <div id="advantage2-div2">
+                    <div id="advantage2-div3">
+                        <i class="fa-solid fa-tags fa-2xl" style="color: #fc2803;"></i>
+                    </div>
+                    <div id="advantage2-div4">
+                        <h5 style="color: white;">Exciting Deals</h5>
+                        <p style="color: #a3a3a3;">On all prepaid orders</p>
+                    </div>
+                </div>
+                <div id="advantage3-div2">
+                    <div id="advantage3-div3">
+                        <i class="fa-solid fa-credit-card fa-2xl" style="color: #fc2803;"></i>
+                    </div>
+                    <div id="advantage3-div4">
+                        <h5 style="color: white;">Secure Payments</h5>
+                        <p style="color: #a3a3a3;">SSL/Secure certificate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div id="footer-div1">
+                <div class="footer-div">
+                    <h1>Tech-Shop</h1>
+                    <p>Subscribe to our Email alerts to receive<br> early discount offers, and new products<br> info.
+                    </p>
+                    <input type="email" placeholder="Email Address*" id="footer-input"><br>
+                    <button id="footer-btn">Subscribe</button>
+                </div>
+                <div class="footer-div">
+                    <h3>Help</h3>
+                    <ul class="footer-ul">
+                        <li class="allli">FAQs</li>
+                        <li class="allli">Track Order</li>
+                        <li class="allli">Cancel Order</li>
+                        <li class="allli">Return Order</li>
+                        <li class="allli">Warrenty Info</li>
+                    </ul>
+                </div>
+                <div class="footer-div">
+                    <h3>Policies</h3>
+                    <ul class="footer-ul">
+                        <li class="allli">Return Policy</li>
+                        <li class="allli">Security</li>
+                        <li class="allli">Sitemap</li>
+                        <li class="allli">Privacy Policy</li>
+                        <li class="allli">Terms & Conditions</li>
+                    </ul>
+                </div>
+                <div class="footer-div">
+                    <h3>Company</h3>
+                    <ul class="footer-ul">
+                        <li class="allli">About Us</li>
+                        <li class="allli">Contact Us</li>
+                        <li class="allli">Service Center</li>
+                        <li class="allli">Careers</li>
+                        <li class="allli">Affiliates</li>
+                    </ul>
+                </div>
+            </div>
+            <hr id="footer-hr">
+            <span id="footer-span1">
+                <span>
+                    <p style="display: inline;">2023 | All Rights Reserved.Built by | </p>
+                    <h5 style="display: inline;">DANISH KOHLI</h5>
+                </span>
+                <span id="footer-span2">
+                    <i id="footer-span2-1" class="fa-brands fa-facebook-f fa-lg"></i>
+                    <i id="footer-span2-2" class="fa-brands fa-twitter fa-lg"></i>
+                    <i id="footer-span2-3" class="fa-brands fa-instagram fa-lg"></i>
+                    <i id="footer-span2-4" class="fa-brands fa-linkedin-in fa-lg"></i>
+                </span>
+            </span>
+        </footer>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
